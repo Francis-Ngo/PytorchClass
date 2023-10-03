@@ -1,0 +1,37 @@
+In this video, we will
+look into how we can use graphics processing units
+or GPUs in PyTorch. We will cover CUDA, CPUs and tensors, setting
+the GPU, training, testing. GPUs allow us to run our model
+much faster. What is CUDA? CUDA is a parallel
+computing platform and programming
+model developed by NVIDIA that enables the use of NVIDIA GPUs for
+computational tasks, which in our case is
+training CNNs in PyTorch. In PyTorch, the
+torch.cuda package allows for the utilization
+of GPUs for computation. So importing torch will provide us with the
+necessary packages. Using the torch.cuda package, we'll first check if
+CUDA is available, basically, checking if you
+have a working compatible GPU. Next, we will define our GPU so we can
+send tensors to it. cuda:0 represents the
+first visible CUDA device. Now that our GPU is setup, we can discuss creating our CNN. Computation in PyTorch
+is performed on tensors, as all the data used to train your CNN will be stored in these. One benefit of using tensors
+is that they can run on GPU using the two method which performs a
+device conversion. The two method sends the
+tensor to the GPU and returns a tensor with a specify
+device, which is the GPU. Next, we will discuss
+how to set up our GPU so we can use it. When creating the CNN to
+be trained using a GPU, you do not need to alter the
+init or forward function. As you can see in the
+sample CNN above. The only change in this step is after the CNN object is created. We must use the device
+we set up earlier to send the model to the GPU
+using the two method. This will convert the
+layers you created in the CNN init function
+to CUDA tensors. With your CNN created, now we must learn
+how to train it. The training is the same as
+if you were not using a GPU, except you must send your data, which are the features
+and labels to the GPU. Testing is also similar, but you don't need to send
+the labels to the GPU, because we don't
+need to calculate loss and optimize the
+parameter of the model. In conclusion, you have
+learned how to use a GPU in PyTorch to speed up
+computational related tasks.
